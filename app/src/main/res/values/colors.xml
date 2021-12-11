@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    base-->
+    <color name="colorPrimary">#52B7E5</color>
+    <color name="colorPrimaryDark">#2F657E</color>
+    <color name="colorTransparent">#00007EE3</color>
+    <color name="colorAccent">#5E007EE3</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhiteTrans">#5E8DA3</color>
+    <color name="color_b_nav">#7C0059A2</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorBlackSmoothest">#6c757d</color>
+    <color name="colorBlackOpacity">#2D000000</color>
+    <color name="colorBlackRiple">#80000000</color>
+    <color name="colorWhiiteTrans">#A3FFFFFF</color>
+    <color name="colorRipple">#8B0059A2</color>
+    <color name="colorRed">#cd201f</color>
+    <color name="colorPrimaryOpacity">#4ED3F6</color>
+    <color name="colorOrangeOpacity">#f46018</color>
+    <color name="colorYellow">#e9db2d</color>
+    <color name="colorGreen">#08dd18</color>
+    <color name="colorGray">#868e96</color>
+    <color name="colorBlue">#45aaf2</color>
+    <color name="colorPurple">#914ec5</color>
+    <color name="item_background">#d8d8d8</color>
+    <color name="colorBgCategories">#e2ecff</color>
+    <color name="chatItemOwn">#dcf8c6</color>
+    <color name="chatOpacity">#12000000</color>
+
+    <!--    vivid-->
+    <color name="vividYellow">#BFFB03</color>
+
+    <color name="black_overlay">#66000000</color>
+</resources>
