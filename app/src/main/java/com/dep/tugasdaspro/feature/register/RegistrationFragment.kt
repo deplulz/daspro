@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.dep.tugasdaspro.databinding.FragmentRegistrationBinding
 import com.dep.tugasdaspro.feature.config.arrayMhs
-import com.dep.tugasdaspro.feature.config.dataMhs
+import org.json.JSONObject
 
 class RegistrationFragment : Fragment() {
 
@@ -49,8 +49,8 @@ class RegistrationFragment : Fragment() {
         _binding!!.address = ""
         _binding!!.school = ""
         _binding!!.male = false
-        _binding!!.female=false
-        _binding!!.point="false"
+        _binding!!.female = false
+        _binding!!.point = ""
 
         _binding!!.name.requestFocus()
     }
@@ -61,6 +61,7 @@ class RegistrationFragment : Fragment() {
     }
 
     private fun save() {
+        val dataMhs = JSONObject()
         dataMhs.put("name", _binding!!.name.editText!!.text.toString())
         dataMhs.put("address", _binding!!.from.editText!!.text.toString())
         dataMhs.put("school", _binding!!.fromSchool.editText!!.text.toString())

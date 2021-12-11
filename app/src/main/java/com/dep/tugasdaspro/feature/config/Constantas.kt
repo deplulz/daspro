@@ -1,4 +1,17 @@
 package com.dep.tugasdaspro.feature.config
 
-val LOOPING_RECEIVER = "loopingReceiver"
-val LOOPING_PARAM = "loopingParam"
+val PROCESS = "proses"
+val ACCEPTED = "accpeted"
+val REJECTED = "rejected"
+
+val PROCESS_REGISTER = "Proses Pendaftaran"
+val REGISTER_REJECTED = "Pendaftaran di tolak"
+val REGISTER_APROVED = "Pendaftaran di Terima"
+
+val mData: ArrayList<String> = ArrayList()
+
+fun setData() {
+    mData.add(PROCESS_REGISTER)
+    mData.add(REGISTER_REJECTED)
+    mData.add(REGISTER_APROVED)
+}
