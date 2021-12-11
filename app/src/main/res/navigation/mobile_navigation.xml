@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.dep.tugasdaspro.feature.teori.TeoriFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_teori" />
+        android:name="com.dep.tugasdaspro.feature.register.RegistrationFragment"
+        android:label="Registrasi Mahasiswa"
+        tools:layout="@layout/fragment_registration" />
 
     <fragment
         android:id="@+id/navigation_notifications"
