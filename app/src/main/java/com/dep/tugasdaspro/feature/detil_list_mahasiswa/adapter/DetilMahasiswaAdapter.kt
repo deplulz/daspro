@@ -7,13 +7,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dep.tugasdaspro.databinding.ItemsMhsBinding
-import com.dep.tugasdaspro.databinding.ItemsTeoriBinding
-import com.dep.tugasdaspro.feature.config.*
-import com.dep.tugasdaspro.feature.decision.Decission
 import com.dep.tugasdaspro.feature.detil_list_mahasiswa.dao.DAOMahasiswa
-import com.dep.tugasdaspro.feature.looping.Looping
-import java.util.*
-import kotlin.collections.ArrayList
+import com.dep.tugasdaspro.feature.process_registration.ProcessRegis
 
 @Suppress("DUPLICATE_LABEL_IN_WHEN")
 class DetilMahasiswaAdapter : RecyclerView.Adapter<DetilMahasiswaAdapter.ViewHolder>() {
@@ -35,7 +30,7 @@ class DetilMahasiswaAdapter : RecyclerView.Adapter<DetilMahasiswaAdapter.ViewHol
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(mData[position],mAct)
+        holder.bind(mData[position],mAct, position)
     }
 
     override fun getItemCount(): Int {
@@ -44,8 +39,8 @@ class DetilMahasiswaAdapter : RecyclerView.Adapter<DetilMahasiswaAdapter.ViewHol
 
     class ViewHolder private constructor(private val binding: ItemsMhsBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(mData: DAOMahasiswa, mAct: Activity) {
-//            val intent = Intent(mAct, Looping::class.java)
+        fun bind(mData: DAOMahasiswa, mAct: Activity, position: Int) {
+            val intent = Intent(mAct, ProcessRegis::class.java)
             binding.name = mData.name
             binding.status = when (mData.aproved) {
                 "0" -> {
@@ -70,7 +65,18 @@ class DetilMahasiswaAdapter : RecyclerView.Adapter<DetilMahasiswaAdapter.ViewHol
                     "#cd201f"
                 }
             }
-
+            binding.parent.setOnClickListener {
+                val maps = HashMap<String, String>()
+                maps["dataIndex"] = "$position"
+                maps["name"] = mData.name
+                maps["address"] = mData.address
+                maps["school"] = mData.school
+                maps["gender"] = mData.gender
+                maps["nilai"] = mData.point
+                maps["aproved"] = mData.aproved
+                intent.putExtra("data", maps)
+                mAct.startActivity(intent)
+            }
             binding.executePendingBindings()
         }
 

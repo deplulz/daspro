@@ -1,12 +1,14 @@
 package com.dep.tugasdaspro.feature.detil_list_mahasiswa
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dep.tugasdaspro.databinding.ActivityDetilListMahasiswaBinding
-import com.dep.tugasdaspro.feature.config.PROCESS
-import com.dep.tugasdaspro.feature.config.REJECTED
-import com.dep.tugasdaspro.feature.config.arrayMhs
+import com.dep.tugasdaspro.feature.config.*
 import com.dep.tugasdaspro.feature.detil_list_mahasiswa.adapter.DetilMahasiswaAdapter
 import com.dep.tugasdaspro.feature.detil_list_mahasiswa.dao.DAOMahasiswa
 
@@ -16,6 +18,7 @@ class DetilListMahasiswa : AppCompatActivity() {
     private val _mData by lazy { arrayMhs }
     private val _tempData by lazy { ArrayList<DAOMahasiswa>() }
     private lateinit var _DAO: DAOMahasiswa
+    private val _updateJobs by lazy { UpdateData() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +27,13 @@ class DetilListMahasiswa : AppCompatActivity() {
         setContentView(_binding!!.root)
     }
 
+    override fun onResume() {
+        super.onResume()
+        registerReceiver(_updateJobs, IntentFilter(JOB_RECEIVER))
+    }
+
     private fun prepareData() {
+        _tempData.clear()
         _adapter.notifyDataSetChanged()
         _binding!!.recyclerView.apply {
             layoutManager =
@@ -38,7 +47,7 @@ class DetilListMahasiswa : AppCompatActivity() {
             intent.extras!!.getString("flag") == REJECTED -> {
                 getRejectedData()
             }
-            intent.extras!!.getString("flag") == REJECTED -> {
+            intent.extras!!.getString("flag") ==  ACCEPTED-> {
                 getAprovedData()
             }
             else -> {
@@ -57,6 +66,7 @@ class DetilListMahasiswa : AppCompatActivity() {
                 objects.getString("address"),
                 objects.getString("school"),
                 objects.getString("gender"),
+                objects.getString("nilai"),
                 objects.getString("aproved")
             )
             _tempData.add(_DAO)
@@ -72,6 +82,7 @@ class DetilListMahasiswa : AppCompatActivity() {
                     objects.getString("address"),
                     objects.getString("school"),
                     objects.getString("gender"),
+                    objects.getString("nilai"),
                     objects.getString("aproved")
                 )
                 _tempData.add(_DAO)
@@ -88,6 +99,7 @@ class DetilListMahasiswa : AppCompatActivity() {
                     objects.getString("address"),
                     objects.getString("school"),
                     objects.getString("gender"),
+                    objects.getString("nilai"),
                     objects.getString("aproved")
                 )
                 _tempData.add(_DAO)
@@ -104,10 +116,18 @@ class DetilListMahasiswa : AppCompatActivity() {
                     objects.getString("address"),
                     objects.getString("school"),
                     objects.getString("gender"),
+                    objects.getString("nilai"),
                     objects.getString("aproved")
                 )
                 _tempData.add(_DAO)
             }
         }
+    }
+
+    inner class UpdateData : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            prepareData()
+        }
+
     }
 }

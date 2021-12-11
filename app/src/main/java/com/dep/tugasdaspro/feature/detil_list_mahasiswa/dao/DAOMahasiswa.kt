@@ -7,5 +7,6 @@ data class DAOMahasiswa(
     var address: String,
     var school: String,
     var gender: String,
+    var point: String,
     var aproved: String
 )

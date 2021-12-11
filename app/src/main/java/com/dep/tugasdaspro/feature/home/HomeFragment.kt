@@ -1,19 +1,12 @@
 package com.dep.tugasdaspro.feature.home
 
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.dep.tugasdaspro.databinding.FragmentHomeBinding
 import com.dep.tugasdaspro.feature.config.arrayMhs
-import com.dep.tugasdaspro.feature.config.arrayMhsApproved
 
 class HomeFragment : Fragment() {
 
@@ -34,13 +27,13 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        for (i in 0 until arrayMhsApproved.length()) {
-            if (arrayMhsApproved.getJSONObject(i).has("aproved")) {
+        for (i in 0 until arrayMhs.length()) {
+            if (arrayMhs.getJSONObject(i).has("aproved")) {
                 when {
-                    arrayMhsApproved.getJSONObject(i).get("aproved") == 1 -> {
+                    arrayMhs.getJSONObject(i).getString("aproved") == "1" -> {
                         _aproved += 1
                     }
-                    arrayMhsApproved.getJSONObject(i).get("aproved") == 2 -> {
+                    arrayMhs.getJSONObject(i).getString("aproved") == "2" -> {
                         _rejected += 1
                     }
                     else -> {

@@ -13,7 +13,7 @@ class RegistrationFragment : Fragment() {
 
     private var _binding: FragmentRegistrationBinding? = null
     private lateinit var root: View
-    private var gender = 0
+    private var gender = "L"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,10 +28,10 @@ class RegistrationFragment : Fragment() {
 
     private fun prepareData() {
         _binding!!.gender.setOnCheckedChangeListener { group, checkedId ->
-            gender = if (checkedId == group.checkedRadioButtonId) {
-                0
+            if (checkedId == group.checkedRadioButtonId) {
+                gender = "L"
             } else {
-                1
+                gender = "P"
             }
         }
 
@@ -48,8 +48,7 @@ class RegistrationFragment : Fragment() {
         _binding!!.nama = ""
         _binding!!.address = ""
         _binding!!.school = ""
-        _binding!!.male = false
-        _binding!!.female = false
+        _binding!!.gender.clearCheck()
         _binding!!.point = ""
 
         _binding!!.name.requestFocus()
@@ -66,6 +65,7 @@ class RegistrationFragment : Fragment() {
         dataMhs.put("address", _binding!!.from.editText!!.text.toString())
         dataMhs.put("school", _binding!!.fromSchool.editText!!.text.toString())
         dataMhs.put("gender", gender)
+        dataMhs.put("nilai", _binding!!.nilaiAkhir.editText!!.text.toString())
         dataMhs.put("aproved", 0)
         arrayMhs.put(dataMhs)
         clear()

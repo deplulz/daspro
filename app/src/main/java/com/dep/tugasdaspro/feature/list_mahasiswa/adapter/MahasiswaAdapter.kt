@@ -57,6 +57,9 @@ class MahasiswaAdapter : RecyclerView.Adapter<MahasiswaAdapter.ViewHolder>() {
                     REGISTER_APROVED -> {
                         intent.putExtra("flag", ACCEPTED)
                     }
+                    else -> {
+                        intent.putExtra("flag", ALL_REGISTER)
+                    }
                 }
 
                 mAct.startActivity(intent)
